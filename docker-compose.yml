@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: ciees_slisc
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 123
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./ciees_slisc.sql:/docker-entrypoint-initdb.d/ciees_slisc.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - local
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+    ports:
+      - "8080:80"
+    networks:
+      - local
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    networks:
+      - local
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge
