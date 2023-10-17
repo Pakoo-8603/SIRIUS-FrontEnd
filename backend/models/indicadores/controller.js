@@ -92,6 +92,11 @@ module.exports = function (InjectionDatabase) {
         return database.query(table, { ID_Indicador: ID_Indicador } );
     }
 
+    function i_count() {
+        return database.queryListIndicadores(table);
+    }
+
+
     /**
          * The `i_add` function is an asynchronous function that takes in a `data`
          * parameter. It performs the following steps:
@@ -124,6 +129,7 @@ module.exports = function (InjectionDatabase) {
         i_list,
         i_select,
         i_add,
-        i_delete
+        i_delete,
+        i_count
     }
 }

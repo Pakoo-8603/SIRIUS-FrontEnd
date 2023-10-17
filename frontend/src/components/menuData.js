@@ -1018,6 +1018,11 @@ export const menuData = [{
         },
     ],
 },
+{
+    title: "Resumen",
+    icon: "mdi-collage",
+    url: '/resumen'
+},
 ];
 
 

@@ -63,6 +63,15 @@ module.exports = function (InjectionDatabase) {
         return database.list(table);
     }
 
+    function ex_countF() {
+        return database.queryListFortalezas(table);
+    }
+
+    function ex_countD() {
+        return database.queryListDebilidades(table);
+    }
+
+
     /**
      * The `ex_select` function is used to query a database table based on the provided
      * `ID_Expediente` parameter. It returns the result of the query.
@@ -125,6 +134,8 @@ module.exports = function (InjectionDatabase) {
         ex_list,
         ex_select,
         ex_add,
-        ex_delete
+        ex_delete,
+        ex_countF,
+        ex_countD
     }
 }

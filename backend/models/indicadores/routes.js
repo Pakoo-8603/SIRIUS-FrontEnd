@@ -12,8 +12,19 @@ const router = express.Router();
 
 // Routes
 router.get('/', i_list);
+router.get('/Indicadores/', i_count)
 router.get('/:ID_Indicador', i_select);
 router.post('/', security(), i_add);
+
+async function i_count(req, res, next) {
+    try {
+        const list = await controller.i_count();
+        responses.success(req, res, list, 200);
+    } catch (error) {
+        next(error);
+    }
+}
+
 
 /**
      * The `i_list` function is an asynchronous function that handles a request to

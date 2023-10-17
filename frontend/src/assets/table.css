@@ -1,0 +1,34 @@
+.custom-card {
+  /* width: 75%; Ajusta el ancho según tus preferencias */
+  margin: 0 auto; /* Centra horizontalmente el card */
+}
+
+.custom-card2 {
+  width: 85%; /* Ajusta el ancho según tus preferencias */
+  margin: 0 auto; /* Centra horizontalmente el card */
+}
+
+.custom-card3 {
+  width: 50%; /* Ajusta el ancho según tus preferencias */
+  margin: 0 auto; /* Centra horizontalmente el card */
+}
+
+.custom-card4 {
+  width: 50%; /* Ajusta el ancho según tus preferencias */
+  margin: 0 auto; /* Centra horizontalmente el card */
+}
+
+.c1 {
+  margin: 0 auto; /* Centra horizontalmente el card */
+  border-right: 1px solid #ccc; /* Agrega un borde derecho a las celdas con clase 'c1' */
+}
+
+.semaphore-container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  border-radius: 12px;
+  margin: auto;
+  transform: rotate(90deg);
+}

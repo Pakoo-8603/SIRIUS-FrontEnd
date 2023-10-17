@@ -12,9 +12,31 @@ const router = express.Router();
 
 // Routes
 router.get('/', ex_list);
+router.get('/Fortalezas/', ex_countF);
+router.get('/Debilidades/', ex_countD);
 router.get('/:ID_Expediente', ex_select);
 router.post('/', security(), ex_add);
 router.put('/:ID_Expediente', security(), ex_delete);
+
+async function ex_countF(req, res, next) {
+    try {
+        const list = await controller.ex_countF();
+        responses.success(req, res, list, 200);
+    } catch (error) {
+        next(error);
+    }
+}
+
+async function ex_countD(req, res, next) {
+    try {
+        const list = await controller.ex_countD();
+        responses.success(req, res, list, 200);
+    } catch (error) {
+        next(error);
+    }
+}
+
+
 
 /**
      * The `ex_list` function is an asynchronous function that handles a request to

@@ -203,6 +203,48 @@ function list(table) {
     });
 }
 
+/*
+    IndicadoresResumen 
+*/
+function queryListIndicadores(table) {
+    return new Promise((resolve, reject) => {
+        console.log(table);
+        table = clear(table);
+    connection.query(`SELECT Estado, COUNT(*) AS count FROM ${table} WHERE Estado IN (1,2,3,4) GROUP BY ESTADO ORDER BY ESTADO ASC`, (err, data) => {
+            return err ? reject(err) : resolve(data);
+        });
+    });
+}
+
+/*
+    FortalezasResumen
+*/
+function queryListFortalezas(table) {
+    return new Promise((resolve, reject) => {
+        console.log(table);
+        table = clear(table);
+    connection.query(`SELECT Estado_F, COUNT(*) AS countF FROM ${table} WHERE Estado_F IN (1,2,3,4) GROUP BY Estado_F ORDER BY Estado_F ASC`, (err, data) => {
+            return err ? reject(err) : resolve(data);
+        });
+    });
+}
+
+
+/*
+    DebilidadesResumen
+ */
+function queryListDebilidades(table) {
+    return new Promise((resolve, reject) => {
+        console.log(table);
+        table = clear(table);
+    connection.query(`SELECT Estado_D, COUNT(*) AS countD FROM ${table} WHERE Estado_D IN (1,2,3,4) GROUP BY Estado_D ORDER BY Estado_D ASC;`, (err, data) => {
+            return err ? reject(err) : resolve(data);
+        });
+    });
+}
+
+
+
 /**
  * This is a JavaScript function named `db_select` that performs a database query
  * to select records from a specified table based on a given `ID_Usuario` value.
@@ -468,7 +510,6 @@ function db_check(table, query) {
     });
 }
 
-
 /**
  * Updates records in a database table based on a given query and data.
  * 
@@ -619,6 +660,8 @@ function queryList(table, query) {
     });
 }
 
+
+
 // Export functions for use in other modules
 module.exports = {
     list,
@@ -628,5 +671,8 @@ module.exports = {
     db_add,
     db_add_update,
     query,
-    queryList
+    queryList,
+    queryListIndicadores,
+    queryListFortalezas,
+    queryListDebilidades
 }
